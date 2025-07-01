@@ -1,0 +1,14 @@
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\bin\Debug\net8.0\Projeto_Ranking_de_Vendas.exe
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\bin\Debug\net8.0\Projeto_Ranking_de_Vendas.deps.json
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\bin\Debug\net8.0\Projeto_Ranking_de_Vendas.runtimeconfig.json
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\bin\Debug\net8.0\Projeto_Ranking_de_Vendas.dll
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\bin\Debug\net8.0\Projeto_Ranking_de_Vendas.pdb
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\Projeto_Ranking_de_Vendas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\Projeto_Ranking_de_Vendas.AssemblyInfoInputs.cache
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\Projeto_Ranking_de_Vendas.AssemblyInfo.cs
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\Projeto_Ranking_de_Vendas.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\Projeto_Ranking_de_Vendas.dll
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\refint\Projeto_Ranking_de_Vendas.dll
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\Projeto_Ranking_de_Vendas.pdb
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\Projeto_Ranking_de_Vendas.genruntimeconfig.cache
+C:\Users\Asus\source\repos\Projeto_Ranking_de_Vendas\Projeto_Ranking_de_Vendas\obj\Debug\net8.0\ref\Projeto_Ranking_de_Vendas.dll
