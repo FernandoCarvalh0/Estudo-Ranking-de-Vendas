@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Data;
 using System.Runtime.Serialization;
 //lista dos vendedores
 var vendedores = new List<Vendedor>
@@ -12,17 +13,20 @@ var vendedores = new List<Vendedor>
 
     new Vendedor {Id = 4 , Nome = "Juliana"},
 
-    new Vendedor {Id = 5 , Nome = "Vinicius"}
+    new Vendedor {Id = 5 , Nome = "André"},
+
+    new Vendedor {Id = 6 , Nome = "Joaquim"},
+
+    new Vendedor {Id = 7 , Nome = "Luiz"},
+
+    new Vendedor {Id = 8 , Nome = "Isabela"},
+
+    new Vendedor {Id = 9 , Nome = "Thiago"},
+
+    new Vendedor {Id = 10 , Nome = "Vinicius"}
 
 };
 
-/*var produtos = new[] { "Teclado", "Mouse", "Monitor", "Caixa de Som", "HeadSet" };
-for (int i = 0; i < 5; i++)
-{
-    var indice = Random.Shared.Next(produtos.Length);
-    Console.WriteLine($"Nome Aleátório: {produtos[indice]}");
-}
-*/
 //lista dos produtos
 var produtos = new List<Produto>
 {
@@ -49,69 +53,116 @@ for (int i = 0; i < 10; i++)
     var vendedorAleatorio = vendedores[random.Next(vendedores.Count)];
     var quantidade = random.Next(1, 5);
     var valorTotal = 0m;
-
-    for (int q = 0; q < quantidade; q++)
+ 
     {
+        for (int q = 0; q < quantidade; q++)
+        {
 
-        var produtoAleatorio = produtos[random.Next(produtos.Count)];
-        valorTotal += produtoAleatorio.Preco;
+            var produtoAleatorio = produtos[random.Next(produtos.Count)];
+            valorTotal += produtoAleatorio.Preco;
+        }
     }
+  
+    var venda = new Venda
+    {
+        IdVendedor = vendedorAleatorio.Id,
+        NomeVendedor = vendedorAleatorio.Nome,
+        Data = DateTime.Now,
+        Valor = valorTotal,
+        RankVendedor = vendedorAleatorio.Rank
+    };
 
+    listaDeVendas.Add(venda);
+}
+
+//chance do vendedor estar sem vendas
+for (int i = 0; i < 5; i++)
+{
+    var vendedorAleatorio = vendedores[random.Next(vendedores.Count)];
+    var valorTotal = 0m;
 
     var venda = new Venda
     {
         IdVendedor = vendedorAleatorio.Id,
         NomeVendedor = vendedorAleatorio.Nome,
         Data = DateTime.Now,
-        Valor = valorTotal
+        Valor = valorTotal,
+        
     };
 
     listaDeVendas.Add(venda);
 }
+
 //soma
 
 var soma = listaDeVendas
     .GroupBy(p => p.NomeVendedor)
-    .Select(g => new
+    .Select(g => new Venda
     {
-        Nome = g.Key,
-        Total = g.Sum(p => p.Valor)
+        NomeVendedor = g.Key,
+        Valor = g.Sum(p => p.Valor),
+        RankVendedor = g.Key
     })
     .ToList();
 
-foreach (var item in soma.OrderByDescending(p => p.Total))
+//Sistema do Ranking
+foreach (var item in soma)
 {
-    if (item.Total > 2000)
-    {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-    }
-    if (item.Total < 2000)
-    {
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-    }
-    if (item.Total < 1000)
-    {
-        Console.ForegroundColor = ConsoleColor.DarkRed;
-    }
-    if (item.Total < 500)
-    {
-        Console.ResetColor();
-    }
-    Console.Write($"Vendedor: {item.Nome} ||");
-    Console.Write($" Valor da Venda R$: {item.Total:F2}");
-    Console.WriteLine("");
+    
 
-    Console.ResetColor();
+    if (item.Valor > 2000)
+    {
+        item.RankVendedor = "Ouro";
+    }
+    if (item.Valor < 2000)
+    {
+        item.RankVendedor = "Prata";
+    }
+    if (item.Valor < 1000)
+    {
+        item.RankVendedor = "Bronze";
+    }
+    if (item.Valor < 500)
+    {
+        item.RankVendedor = "Ferro";
+    }
 }
 
-//Sistema do Ranking
 
+Console.WriteLine("  ---------");
+Console.WriteLine("|| Vendas ||");
+Console.WriteLine("  ---------");
+Console.WriteLine("");
+
+foreach (var item in soma.OrderByDescending(p => p.Valor))
+{
+    Console.WriteLine($"Vendedor: {item.NomeVendedor}");
+    Console.WriteLine($"Valor da Venda R$: {item.Valor:F2}");
+    Console.WriteLine($"Rank: {item.RankVendedor}");
+
+    Console.WriteLine("");
+}
+
+Console.WriteLine("");
+Console.WriteLine("  ----------||-----------");
+Console.WriteLine("|| Vendedores sem Vendas ||");
+Console.WriteLine("  ----------||-----------");
+Console.WriteLine("");
+foreach (var item in soma)
+{
+    if (item.Valor == 0)
+    {
+        Console.WriteLine($"{item.NomeVendedor}");
+    }
+}
 
 Console.ReadKey();
 public class Vendedor
 {
     public int Id { get; set; }
     public string Nome { get; set; }
+
+    public string Rank { get; set; }
 }
 
 public class Venda
@@ -122,14 +173,16 @@ public class Venda
     public string NomeVendedor { get; set; }
     public DateTime Data { get; set; }
     public decimal Valor { get; set; }
-}
 
-public class Produto
-{
-    public int Id { get; set; }
-    public string Nome { get; set; }
-    public int Quantidade { get; set; }
+    public string RankVendedor { get; set; }
 
-    public decimal Preco { get; set; }
 }
+    public class Produto
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public int Quantidade { get; set; }
+
+        public decimal Preco { get; set; }
+    }
 
